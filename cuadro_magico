@@ -1,0 +1,72 @@
+#include<stdio.h>
+#include<math.h>
+#include<conio.h>
+
+int main(void){
+	int n, t, i, j;
+	int a=0;
+	int x=0, y=0;
+	
+	printf("CUADRO MAGICO\n");
+	printf("Ingrese una cantidad de numeros con la que se puda hacer un cuadro:\t");
+	scanf("%d", &n);
+	t=sqrt(n);
+	a=t+1;
+	printf("Cuadro %dx%d\n", t, t );
+	int cuadro[a][a];
+	int vector[a]{}, vector1[a]{};
+	
+	for(i=1;i<a;i++)
+		for(j=1;j<a;j++){
+			printf("Posicion %dx%d\t", i, j);
+			scanf("%d", &cuadro[i][j]);
+			vector[j]=vector[j]+cuadro[i][j];
+		}
+	
+	for(i=1;i<a;i++){
+		for(j=1;j<a;j++){
+			vector1[i]=vector1[i]+cuadro[i][j];
+		}
+	}
+	
+	printf("\n");
+	printf("Su cuadro magico:\n");
+	for(i=1;i<a;i++){
+		printf("\t");
+		for(j=1;j<a;j++){
+			printf("%d\t", cuadro[i][j]);
+		}
+		printf("\n");
+	}
+	
+	printf("\n");
+	printf("Columnas:\n");
+	printf("\t");
+	for(i=1;i<a;i++){
+		printf("%d\t", vector[i]);
+	}
+	
+	printf("\n");
+	printf("Filas:\n");
+	for(i=1;i<a;i++){
+		printf("\t");
+		printf("%d\n", vector1[i]);
+	}
+	
+	printf("\n");
+	printf("Diagonal 1\n");
+	for(i=1, j=1; i<a && j<a; i++, j++){
+		x=x+cuadro[i][j];
+	}
+	printf("\t%d", x);
+	
+	printf("\n");
+	printf("Diagonal 2\n");
+	for(i=a-1, j=1; i>0 && j<a; i--, j++){
+		y=y+cuadro[i][j];
+	}
+	printf("\t%d",y);
+	
+	getch();
+	return 0;
+}
